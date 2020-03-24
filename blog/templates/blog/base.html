@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'blog/main.css' %}" type="text/css">
+    <link rel="icon" type="image/ico" href="/media/blogicon.png" />
+
+    {% if title %}
+        <title>My Blog - {{ title }}</title>
+    {% else %}
+        <title>My Blog</title>
+    {% endif %}
+</head>
+<body>
+    <header class="site-header">
+        <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+          <div class="container">
+            <a class="navbar-brand mr-4" href="{% url 'blog-home' %}">My Blog</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarToggle">
+              <div class="navbar-nav mr-auto">
+                <a class="nav-item nav-link" href="{% url 'blog-home' %}">Home</a>
+                <a class="nav-item nav-link" href="{% url 'blog-about' %}">About</a>
+              </div>
+              <!-- Navbar Right Side -->
+              <div class="navbar-nav">
+                {% if user.is_authenticated %}
+                  <a class="nav-item nav-link" href="{% url 'post-create' %}">New Post</a>
+                  <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
+                  <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+                {% else %}
+                  <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+                  <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </nav>
+    </header>
+
+    <main role="main" class="container">
+        <div class="row">
+          <div class="col-md-8">
+            {% if messages %}
+              {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                  {{ message }}
+                </div>
+              {% endfor %}
+            {% endif %}
+            {% block content %}{% endblock %}
+          </div>
+          <div class="col-md-4">
+            <div class="content-section">
+              <h3>Our Sidebar</h3>
+              <hr>
+              <p class='text-muted'>Use our sidebar to know weather report and latest news and much more
+                <ul class="list-group">
+                  <li class="list-group-item list-group-item-light">
+                    <a target="_blank" class="text-muted text-decoration-none" href="https://www.accuweather.com">
+                      <i class="fas fa-cloud-sun-rain mr-3" style="font-size:24px"></i>
+                      Want to know the weather of your city
+                    </a>
+                  </li>
+                  <li class="list-group-item list-group-item-light">
+                    <a target="_blank" class="text-muted text-decoration-none" href="https://news.google.com">
+                      <i class="fa fa-newspaper-o mr-3" style="font-size:24px"></i> 
+                      Latest News
+                    </a>
+                  </li>
+                  <li class="list-group-item list-group-item-light">
+                    <a target="_blank" class="text-muted text-decoration-none" href="https://calendar.google.com">
+                      <i class="fa fa-calendar mr-3" style="font-size:24px"></i> 
+                      Calendars
+                    </a>
+                  </li>
+                  <li class="list-group-item list-group-item-light">
+                    <a target="_blank" class="text-muted text-decoration-none" href="https://www.youtube.com">
+                      <i class="fab fa-youtube mr-3" style="font-size:24px"></i>
+                      YouTube
+                    </a>
+                  </li>
+                </ul>
+              </p>
+            </div>
+            <div class="container-fluid" style="text-align: center;">
+              <a href="#" class="text-muted text-decoration-none mr-4 ml-3">Privacy</a>
+              <a href="#" class="text-muted text-decoration-none mr-4">Terms</a>
+              <a href="#" class="text-muted text-decoration-none mr-4">Help</a>
+              <a href="#" class="text-muted text-decoration-none mr-4">Security</a>
+            </div>
+            <h4 class="text-center font-weight-bolder" style="font-family: monospace;">Made With <i class="fa fa-heart" style="font-size:20px;color:red"></i> by Nitish Kumar</h4>
+          </div>
+        </div>
+    </main>
+    
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>
