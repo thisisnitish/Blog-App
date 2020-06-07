@@ -2,7 +2,7 @@
 
 A Web App serving as a Blog writing website<br>
 Experience the App here: https://myblogdiaryapp.herokuapp.com/<br>
-Find the source code here: <br>
+Find the source code here: https://github.com/thisisnitish/Blog-App<br>
 <hr>
 
 **Login Details & Register Details**<br>
