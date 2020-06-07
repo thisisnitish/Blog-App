@@ -5,6 +5,8 @@ Experience the App here: https://myblogdiaryapp.herokuapp.com/<br>
 Find the source code here: <br>
 <hr>
 
+**Login Details & Register Details**<br>
+--- User can register himself on the app and use this app normally --<br>
 
 <ul>
     <li>UI built with: <b>HTML, CSS, JS, Bootstrap4</b></li>
