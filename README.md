@@ -13,6 +13,7 @@ Find the source code here: https://github.com/thisisnitish/Blog-App<br>
     <li>Backend using: <b>Django</b></li>   
     <li>DBMS: <b>PostgresSql</b></li>
     <li>Deployed and Hosted on Heroku</li>
+    <li>Used AWS S3 bucket to store the user's profile pic</li>
 </ul>
 <hr>
 
